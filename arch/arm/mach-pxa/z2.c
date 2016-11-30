@@ -168,12 +168,16 @@ static struct mtd_partition z2_flash_parts[] = {
 		.offset	= 0x40000,
 		.size	= 0x20000,
 	}, {
-		.name	= "Flash",
+		.name	= "Kernel",
 		.offset	= 0x60000,
-		.size	= 0x780000,
+		.size	= 0x120000,
+	}, {
+		.name	= "Filesystem",
+		.offset	= 0x180000,
+		.size	= 0x660000,
 	}, {
 		.name	= "U-Boot Logo",
-		.offset = 0x7e0000,
+		.offset	= 0x7e0000,
 		.size	= MTDPART_SIZ_FULL,
 	},
 };
@@ -437,7 +441,7 @@ static struct gpio_keys_button z2_pxa_buttons[] = {
 	{
 		.code		= KEY_POWER,
 		.gpio		= GPIO1_ZIPITZ2_POWER_BUTTON,
-		.active_low	= 0,
+		.active_low	= 1,
 		.desc		= "Power Button",
 		.wakeup		= 1,
 		.type		= EV_KEY,
